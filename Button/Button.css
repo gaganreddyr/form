@@ -1,0 +1,17 @@
+.btn{
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.primary{
+    background-color: crimson;
+    color: beige;
+}
+
+.secondary{
+    background: beige;
+    color: black;
+}
