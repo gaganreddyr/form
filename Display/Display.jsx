@@ -11,7 +11,7 @@ const Display = () => {
                 {mode === "signup"
                 ? "Signup"
                 : mode === "forgot"
-                ? "Reset Password"
+                ? "Forgot Password"
                 : "Login"}
             </h2>
             
@@ -43,4 +43,5 @@ const Display = () => {
     );
 };
 export default Display;
+
 
