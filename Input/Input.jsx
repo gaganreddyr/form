@@ -3,9 +3,10 @@ import "./Input.css"
 
 const Input = ({type, placeholder}) =>{
     return (
-        <div className="inputbox">
+        <div className="inputBox">
             <input type={type} placeholder={placeholder}/>
         </div>
     );
 };
+
 export default Input;  
