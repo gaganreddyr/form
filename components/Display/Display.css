@@ -1,0 +1,58 @@
+.data{
+  width:400px;
+  height: 360px;
+  background:linear-gradient(
+  135deg,
+  rgba(255, 255, 255, 0.126),
+  rgba(255,255,255,0.05));
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border-radius:6px;
+  text-align:center;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+
+.forgot{
+  font-size:16px;
+  color:aliceblue;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.back{
+  margin-top:15px;
+  cursor:pointer;
+  font-size:16px;
+  color: aliceblue;
+}
+
+.error{
+  color:rgb(0, 183, 255) ;
+  font-size:16px;
+  margin-top:5px;
+}
+
+.title{
+  font-size: 32px;
+  margin-bottom: 30px;
+  transition: 0.3s ease;
+}
+
+.title.login{
+  color: #008bbd;
+}
+
+.title.signup{
+  color: #008bbd;
+}
+
+.title.forgot{
+  color: #008bbd;
+}

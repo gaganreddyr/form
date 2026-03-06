@@ -1,0 +1,13 @@
+.inputBox{
+  background: aliceblue;
+  padding:12px;
+  border-radius:6px;
+  margin-bottom:15px;
+}
+
+.inputBox input{
+  border:none;
+  outline: aliceblue;
+  width:100%;
+  background:aliceblue;
+}
