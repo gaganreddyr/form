@@ -19,7 +19,7 @@ const Display = () => {
 
             <Input type="email" placeholder="Email id"/>
 
-            {mode !== "frogot" && (<Input type="password" placeholder="Password"/>)}
+            {mode !== "forgot" && (<Input type="password" placeholder="Password"/>)}
             
             {mode === "login" && (
                 <p className="forgot" onClick={()=> setMode("forgot")}>Forgot Password?</p>
@@ -31,7 +31,7 @@ const Display = () => {
                 ):(
                  <>
                     <Button text="Sign Up" type= {mode === "signup"?"primary":"secondary"} onClick={()=> setMode("signup")}/>
-                    <Button text="Login" type= {mode === "login"?"primary":"secorndary"} onClick={()=> setMode("login")}/>                      
+                    <Button text="Login" type= {mode === "login"?"primary":"secondary"} onClick={()=> setMode("login")}/>                      
                  </>  
                 )}
             </div>
@@ -43,3 +43,4 @@ const Display = () => {
     );
 };
 export default Display;
+
