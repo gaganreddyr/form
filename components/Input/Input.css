@@ -11,3 +11,8 @@
   width:100%;
   background:aliceblue;
 }
+
+.inputBox input::placeholder {
+  font-size: 16px;
+  color: #000000;
+}

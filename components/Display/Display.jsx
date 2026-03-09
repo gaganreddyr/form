@@ -1,119 +1,182 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
-import "./Display.css"
+import Dropdown from "../Dropdown/Dropdown";
+import "./Display.css";
 
 const Display = () => {
 
-    const [mode, setMode] = useState("login");
-    const [email, setEmail] = useState("");
-    const [error, setError] = useState("");
+  const [mode, setMode] = useState("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [region, setRegion] = useState("");
 
-    const validateEmail = () => {
-        const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+  
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [passError, setPassError] = useState("");
 
-        if(!pattern.test(email)){
-            setError("Please enter a valid email address");
-            return false;
-        }
+  const regions = ["Bangalore", "Hyderabad", "Chennai", "Mumbai", "Delhi"];
 
-        setError("");
-        return true;
-    };
+  const validateEmail = (value) => {
+    const pattern = /^[a-zA-Z0-9.]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
 
-    const handleEmailChange = (e) => {
-        const value = e.target.value;
-        setEmail(value);
+    if (!pattern.test(value)) {
+      setError("Enter a valid email address");
+      return false;
+    }
 
-        if(value === ""){
-            setError("");
-        } else {
-            validateEmail();
-        }
-    };
+    setError("");
+    return true;
+  };
 
-    return(
-        <div className="data">
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
 
-            <h2 className={
-                    mode === "signup"
-                    ? "title signup"
-                    : mode === "forgot"
-                    ? "title forgot"
-                    : "title login"}
-            >
-                {mode === "signup"
-                ? "Signup"
-                : mode === "forgot"
-                ? "Forgot Password"
-                : "Login"}
-            </h2>
-            
-            {mode === "signup" && (
-                <Input type="text" placeholder="Name"/>
-            )}
+    if (value === "") {
+      setError("");
+    } else {
+      validateEmail(value);
+    }
+  };
 
-            <Input 
-                type="email" 
-                placeholder="Email id"
-                value={email}
-                onChange={handleEmailChange}
+  const handleLogin = () => {
+
+    let valid = true;
+
+    if (!email) {
+      setError("Enter a valid email");
+      valid = false;
+    }
+
+    if (!password) {
+      setPassError("Enter a valid password");
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    console.log("Login success", { email, password });
+
+  };
+
+  const changeMode = (newMode) => {
+    setMode(newMode);
+    setEmail("");
+    setPassword("");
+    setRegion("");
+    setError("");
+    setPassError("");
+  };
+
+  return (
+
+    <div className="data">
+
+      <h2 className="title">
+        {mode === "signup"
+          ? "Signup"
+          : mode === "forgot"
+          ? "Forgot Password"
+          : "Login"}
+      </h2>
+
+      {mode === "signup" && (
+        <Input type="text" placeholder="Name" />
+      )}
+
+      <Input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={handleEmailChange}
+      />
+
+      {error && <p className="error">{error}</p>}
+
+      {mode !== "forgot" && (
+        <>
+            <Input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {setPassword(e.target.value); setPassError("");}}
             />
 
-            {error && <p className="error">{error}</p>}
+          {passError && <p className="error">{passError}</p>}
+        </>
+      )}
 
-            {mode !== "forgot" && (
-                <Input type="password" placeholder="Password"/>
-            )}
-            
-            {mode === "login" && (
-                <p 
-                    className="forgot" 
-                    onClick={()=> setMode("forgot")}
-                >
-                    Forgot Password?
-                </p>
-            )}
-            
-            <div className="buttons">
+      {mode === "signup" && (
+        <>
+            <Input
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <Dropdown
+                options={regions}
+                label="Select Region"
+                onSelect={setRegion}
+            />
+        </>
+      )}
 
-                {mode === "forgot" ? (
-                  <Button 
-                    text ="Send reset link" 
-                    type="primary"
-                    onClick={()=> validateEmail()}
-                  />
-                ):(
+      {mode === "login" && (
+        <p
+          className="forgot"
+          onClick={() => changeMode("forgot")}
+        >
+          Forgot Password?
+        </p>
+      )}
 
-                    <>
-                        <Button 
-                            text="Sign Up" 
-                            type= {mode === "signup" ? "primary" : "secondary" } 
-                            onClick={()=> setMode("signup")}
-                        />
+      <div className="buttons">
 
-                        <Button 
-                            text="Login" 
-                            type= {mode === "login" ? "primary" : "secondary" } 
-                            onClick={() => setMode("login")}
-                        />                      
-                    </>  
+        {mode === "forgot" ? (
 
-                )}
+          <Button
+            text="Send reset link"
+            type="primary"
+          />
 
-            </div>
-            
-            {mode === "forgot" && (
-                <p 
-                    className="back" 
-                    onClick={()=> setMode("login")}
-                >
-                    Back to Login
-                </p>
-            )}
+        ) : (
 
-        </div>
-    );
+          <>
+            <Button
+              text="Sign Up"
+              type={mode === "signup" ? "primary" : "secondary"}
+              onClick={() => changeMode("signup")}
+            />
+
+            <Button
+              text="Login"
+              type={mode === "login" ? "primary" : "secondary"}
+              onClick={
+                mode === "login"
+                  ? handleLogin
+                  : () => changeMode("login")
+              }
+            />
+          </>
+
+        )}
+
+      </div>
+
+      {mode === "forgot" && (
+        <p
+          className="back"
+          onClick={() => changeMode("login")}
+        >
+          Back to Login
+        </p>
+      )}
+
+    </div>
+  );
 };
 
 export default Display;
