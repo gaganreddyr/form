@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import "./Dropdown.css";
 
-const Dropdown = ({ options, label, onSelect }) => {
+const Dropdown = ({ options, label, value, onSelect, error }) => {
 
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
@@ -10,29 +10,34 @@ const Dropdown = ({ options, label, onSelect }) => {
   return (
     <div className="dropdown">
 
-      <div className="inputBox dropdown-input" onClick={() => setOpen(!open)}>
-        <span>{selected || label}</span>
+      <div 
+        className={error ? "inputBox dropdown-input errorBox" : "inputBox dropdown-input"} 
+        onClick={() => setOpen(!open)}
+      >
+        <span className={error ? "errorText" : ""}>
+          {error ? error : selected || label}
+        </span>
         {open ? <FiChevronUp /> : <FiChevronDown />}
       </div>
 
       {open && (
         <ul className="dropdown-menu">
-          {options.map((opt, index) => (
+          {options.map((option, index) => (
             <li
               key={index}
               className="dropdown-item"
               onClick={() => {
-                setSelected(opt);
+                setSelected(option);
                 setOpen(false);
-                onSelect?.(opt);
+                onSelect?.(option);
               }}
             >
-              {opt}
+              {option}
             </li>
           ))}
         </ul>
       )}
-
+      
     </div>
   );
 };

@@ -1,7 +1,13 @@
-import React from 'react';
-import Page from "./pages/Page"
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Page from "./pages/Page";
 
 function App() {
-  return <Page/>
+  return (
+    <BrowserRouter>
+      <Page />
+    </BrowserRouter>
+  );
 }
+
 export default App;

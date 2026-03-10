@@ -1,7 +1,6 @@
 .dropdown {
   position: relative;
   width: 100%;
-  
 }
 
 .dropdown-input {
@@ -9,12 +8,13 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  min-height: 45px
 }
 
 .dropdown-input span {
   color: #000000;
   font-family: Arial, sans-serif;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .dropdown-menu {
@@ -28,6 +28,9 @@
   background: aliceblue;
   border-radius: 6px;
   z-index: 100;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
 }
 
 .dropdown-item {
@@ -36,5 +39,10 @@
 }
 
 .dropdown-item:hover {
-  background: #008bbd;
+  background: #00ddff;
+}
+
+.errorText{
+  color: red !important;
+  opacity: 1;
 }

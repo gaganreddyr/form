@@ -2,17 +2,36 @@
   background: aliceblue;
   padding:12px;
   border-radius:6px;
-  margin-bottom:15px;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center; 
+  justify-content:flex-start;
+  width:100%;
+  box-sizing:border-box;
+  border: 2px solid #000000;
 }
 
 .inputBox input{
   border:none;
-  outline: aliceblue;
+  outline:none;
   width:100%;
-  background:aliceblue;
+  background:transparent;
 }
 
-.inputBox input::placeholder {
-  font-size: 16px;
-  color: #000000;
+.inputBox input::placeholder{
+  font-size:13px;
+  color:#000000;
 }
+
+.errorBox {
+  border: 2px solid red;
+}
+
+.input.errorPlaceholder::placeholder {
+  color: red !important;
+  opacity: 1;
+}
+
+
+
+

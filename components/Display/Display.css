@@ -1,10 +1,10 @@
 .data{
-  width:400px;
-  height: 450px;
+  width:320px;
+  min-height: 220px;
   background:linear-gradient(
   135deg,
-  rgba(255, 255, 255, 0.126),
-  rgba(255,255,255,0.05));
+  rgba(104, 104, 104, 0.073),
+  rgba(180, 180, 180, 0.148));
   backdrop-filter: blur(12px);
   padding: 30px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
@@ -12,56 +12,8 @@
   text-align:center;
 }
 
-.buttons{
-  display:flex;
-  justify-content: right;
-  gap:15px;
-  margin-top:20px;
-}
-
-.forgot{
-  font-size:16px;
-  color:aliceblue;
-  cursor:pointer;
-  margin-top:10px;
-}
-
-.back{
-  margin-top:15px;
-  cursor:pointer;
-  font-size:16px;
-  color: aliceblue;
-}
-
-.error{
-  color:rgb(255, 0, 0) ;
-  font-size:16px;
-  margin-top:5px;
-}
-
 .title{
   font-size: 32px;
   margin-bottom: 30px;
-  transition: 0.3s ease;
-}
-
-.title.login{
-  color: #008bbd;
-}
-
-.title.signup{
-  color: #008bbd;
-}
-
-.title.forgot{
-  color: #008bbd;
-}
-
-.dropdown-menu {
-  width: 100%;
-}
-
-.dropdown {
-  margin-top: 15px;
-  width: 100%;
+  color: #00ddff;
 }
